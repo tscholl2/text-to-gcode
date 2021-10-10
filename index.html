@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        function submitForm() {
+            const msg = document.getElementById("message-input").value;
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "text" },
+                body: msg,
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+        <textarea id="message-input" placeholder="enter a message here"></textarea>
+        <button type="button" onclick="submitForm();">Submit</button>
+    </main>
+</body>
+
+</html>
