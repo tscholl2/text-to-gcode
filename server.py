@@ -9,9 +9,11 @@ class BasicServer(BaseHTTPRequestHandler):
         self.wfile.write(open("index.html","br").read())
     def do_POST(self):
         content_len = int(self.headers.get('Content-Length'))
+        print("recieved: ")
+        print(self)
         try:
             body = self.rfile.read(content_len).decode()
-            assert 0 < len(body) < 100
+            assert 0 < len(body) < 200
         except:
             self.send_error(code=400,message="Invalid input")
             return
@@ -26,7 +28,7 @@ class BasicServer(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b"ok")
 
-server = HTTPServer(("localhost", 9000), BasicServer)
+server = HTTPServer(("192.168.1.202",9000), BasicServer)
 
 try:
     server.serve_forever()

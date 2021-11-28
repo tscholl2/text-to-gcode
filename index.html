@@ -2,13 +2,14 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript">
         function submitForm() {
             const msg = document.getElementById("message-input").value;
             fetch("/", {
                 method: "POST",
                 headers: { "Content-Type": "text" },
-                body: msg,
+                body: `${new Date().toDateString()}\n${msg}`,
             });
         }
     </script>
